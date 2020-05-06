@@ -1,0 +1,33 @@
+Problem Description : 
+A binary tree is univalued if every node in the tree has the same value.
+
+Return true if and only if the given tree is univalued.
+Example 1:
+Input: [1,1,1,1,1,null,1]
+Output: true
+Input: [2,2,2,5,2]
+Output: false
+
+
+Code:
+------------
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isUnivalTree(TreeNode* root) {
+        if(root == NULL)
+            return true;
+        bool left = ((root->left == NULL) || (root->left->val == root->val)) && isUnivalTree(root->left);
+        bool right = ((root->right == NULL) || (root->right->val == root->val)) && isUnivalTree(root->right);
+        return left & right;
+        
+    }
+};
