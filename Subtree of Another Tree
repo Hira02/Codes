@@ -35,6 +35,8 @@ Return false.
  
  Code:
  -------------------------------------------------------------
+ sol:1
+ -----------------------------------------------------------------------------
  /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -59,5 +61,48 @@ bool compare(TreeNode*a, TreeNode*b){
         if(s == NULL)
             return false;
         return s && (compare(s, t) || isSubtree(s->left,t) || isSubtree(s->right,t));
+    }
+};
+
+sol 2:
+------------------------------------------------------------------------------------
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool result = false;
+    bool fun(TreeNode* root1, TreeNode* root2){
+        if(root1 == NULL && root2 == NULL)
+            return true;
+        if((root1 != NULL && root2 == NULL) || (root1 == NULL && root2 != NULL))
+            return false;
+        return (root1->val == root2->val) && fun(root1->left, root2->left) &&
+            fun(root1->right, root2->right);
+    }
+    void util(TreeNode* s, TreeNode* t){
+        if(s == NULL)
+            return ;
+        if(s->val == t->val && result == false){
+           result = fun(s,t);
+            cout<<result;
+        }         
+        util(s->left,t);
+        util(s->right, t);  
+        
+    }
+    bool isSubtree(TreeNode* s, TreeNode* t) {
+        if((s == NULL && t != NULL) || (s != NULL && t == NULL))
+            return false;
+        if(s == NULL && t == NULL)
+            return true;
+        util(s, t);
+        return result;
     }
 };
