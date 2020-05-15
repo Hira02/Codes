@@ -1,4 +1,4 @@
-Problem Description:(LC 918)
+/*Problem Description:(LC 918)
 ---------------------------------
 Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.
 
@@ -56,6 +56,7 @@ Finally we compare the sum obtained by both cases, and return the maximum of the
 
 Code:
 --------------------------------------------------------------------------------------------
+*/
 class Solution {
 public:
     int findMaxSumUsingKadane(vector<int>&A){
@@ -98,7 +99,7 @@ public:
     }
 };
 
-TC: O(n)
-SC : O(1)
+//TC: O(n)
+//SC : O(1)
 
 
