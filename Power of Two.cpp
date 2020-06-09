@@ -19,7 +19,7 @@ Input: 218
 Output: false
 */
 
-Code:
+Code:1 TC : O(logn)
 ---------------------------------------------------------------
 class Solution {
 public:
@@ -31,3 +31,14 @@ public:
         return n%2 == 0 && isPowerOfTwo(n/2);
     }
 };
+Code: 2 TC : O(1)
+    -----------------------------------------------------------
+    class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        return n>0 && (!(n&(n-1)));
+    }
+};
+/*
+All power of two numbers have only one bit set. So count the no. of set bits and if you get 1 then number is a power of 2. 
+*/
