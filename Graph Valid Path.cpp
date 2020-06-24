@@ -1,4 +1,4 @@
-https://www.interviewbit.com/problems/valid-path/
+//https://www.interviewbit.com/problems/valid-path/
 /*
 Problem Description : 
 There is a m*n rectangular matrix whose top-left(start) location is (1, 1) and bottom-right(end) location is (m*n). There are k circles each with radius r. Find if there is any path from start to end without touching any circle.
@@ -15,6 +15,23 @@ Input2 : m = 5, n = 5, k = 2, r = 1,
 Output2 : Not Possible
 https://media.geeksforgeeks.org/wp-content/uploads/example-2-1-300x292.png
 
+*/
+
+/*
+
+Approach : Check if the centre of a cell (i, j) of the rectangle comes within any of the circles then do not traverse through that cell and mark that as ‘blocked’.
+Mark rest of the cells initially as ‘unvisited’. Then use BFS to find out shortest path of each cell from starting position. 
+If the end cell is visited then we will return “Possible” otherwise “Not Possible”.
+
+Algorithm :
+
+Take an array of size m*n. Initialize all the cells to 0.
+For each cell of the rectangle check whether it comes within any circle or not (by calculating the distance of that cell from each circle). 
+If it comes within any circle then change the value of that cell to -1(‘blocked’).
+Now, apply BFS from the starting cell and if a cell can be reached then change the value of that cell to 1.
+If the value of the ending cell is 1, then return ‘Possible’, otherwise return ‘Not Possible’.
+
+Source:  https://www.geeksforgeeks.org/path-rectangle-containing-circles/
 */
 Code:
 --------------------------------------------------------
