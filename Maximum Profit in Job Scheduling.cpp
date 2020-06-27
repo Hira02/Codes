@@ -77,3 +77,5 @@ public:
     }
 };
 // Suggestion : https://www.youtube.com/watch?v=cr6Ip0J9izc
+//https://github.com/mission-peace/interview/blob/master/src/com/interview/dynamic/WeightedJobSchedulingMaximumProfit.java
+// Thanks to Tushar Roy for this greate approach
