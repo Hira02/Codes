@@ -14,6 +14,7 @@ Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal numb
 Note: The length of the given binary array will not exceed 50,000.
 */
 Code:
+//Approach : 1
 -----------------------------------------------------------------------------------------------------------
 class Solution {
 public:
@@ -50,6 +51,26 @@ public:
                 max = p.second;
         }
         return max;
+    }
+};
+//Approach : 2
+----------------------------------------------------------------------------------------------------------------
+    class Solution {
+public:
+    int findMaxLength(vector<int>& nums) {
+     unordered_map<int, int> Map;
+        int max_length = 0;
+        int count = 0;
+        Map[0] = -1;
+        for(int i = 0 ; i < nums.size() ; i++){
+            count += (nums[i] == 0)?-1:1;
+            if(Map.find(count) != Map.end()){
+                max_length = max(max_length, i-Map[count]);
+            }else{
+                Map[count] = i;
+            }
+        }
+        return max_length;
     }
 };
 
