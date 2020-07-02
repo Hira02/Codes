@@ -13,7 +13,8 @@ coordinates contains no duplicate point.
 
 
 Code:
-----------------------
+//Approach : 1
+-------------------------------------------------------------------------------------
 class Solution {
 public:
     int gcd(int a, int b){
@@ -40,5 +41,38 @@ public:
         }
         return ans;
         
+    }
+};
+
+//Approach : 2
+-------------------------------------------------------------------------------------------------
+/*
+for three points to be in a straight line the main condtion is the slope of first two points should be equal to slope of second two points.
+Slope of two points are = (y1-y0)/(x1-x0)
+so, as per our conditoon for three points
+
+(y-y1)/(x-x1) = (y1-y0)/(x1-x0)
+=>(x1-x0)*(y-y1) = (y1-y0)*(x-x1) // to avoid divide by zero
+=> dx*(y-y1) = dy*(x-x1)// dx = x1-x0; dy = y1-y0
+*/
+
+
+
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        int x0 = coordinates[0][0];
+        int x1 = coordinates[1][0];
+        int y0 = coordinates[0][1];
+        int y1 = coordinates[1][1];
+        int dx = (x1-x0);
+        int dy = (y1 - y0);
+        for(int i = 2 ; i<coordinates.size() ; i++){
+            int x = coordinates[i][0];
+            int y = coordinates[i][1];
+            if(dx*(y - y1) != dy*(x-x1))
+                return false;
+        }
+        return true;
     }
 };
