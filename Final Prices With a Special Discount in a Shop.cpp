@@ -29,6 +29,7 @@ Input: prices = [10,1,1,6]
 Output: [9,0,1,6]
 */
 Code:
+//Brute-force
 -------------------------------------------------------------------
 class Solution {
 public:
@@ -49,3 +50,24 @@ public:
         return ans;
     }
 };
+//TC : O(n^2)
+//SC : O(1)
+
+//Using stack
+--------------------------------------------------------------------------------
+ class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+        stack<int> Stack;
+        for(int i = 0 ; i < prices.size() ; i++){
+            while(!Stack.empty() && prices[Stack.top()]>=prices[i]){
+                prices[Stack.top()] = prices[Stack.top()] - prices[i];
+                Stack.pop();
+            }
+            Stack.push(i);
+        }
+        return prices;
+    }
+};
+//TC:  O(n)
+//SC : O(n)
