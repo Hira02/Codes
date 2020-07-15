@@ -57,7 +57,8 @@ public:
         }
                 
         
-        if(checkAllWord(board, i-1, j, root, visited, str, ans) || checkAllWord(board, i+1, j, root, visited, str, ans) || checkAllWord(board, i, j+1, root, visited, str, ans) || checkAllWord(board, i, j-1, root, visited, str, ans))
+        if(checkAllWord(board, i-1, j, root, visited, str, ans) || checkAllWord(board, i+1, j, root, visited, str, ans) || 
+           checkAllWord(board, i, j+1, root, visited, str, ans) || checkAllWord(board, i, j-1, root, visited, str, ans))
             return true;
         visited[i][j]=false;
         str.pop_back();
