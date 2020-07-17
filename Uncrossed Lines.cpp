@@ -1,5 +1,5 @@
 /*
-Problem Description : (LC
+Problem Description : (LC 1035)
 We write the integers of A and B (in the order they are given) on two separate horizontal lines.
 
 Now, we may draw connecting lines: a straight line connecting two numbers A[i] and B[j] such that:
