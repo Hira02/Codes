@@ -1,4 +1,4 @@
-Problem Description : (LC 15)
+/*Problem Description : (LC 15)
 ---------------------------------------------------------------------
 Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
@@ -14,12 +14,13 @@ A solution set is:
 [
   [-1, 0, 1],
   [-1, -1, 2]
+  
 ]
 
 */
 
-Code:
-------------------------------------------------------------------------------
+//Code:
+//------------------------------------------------------------------------------
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
