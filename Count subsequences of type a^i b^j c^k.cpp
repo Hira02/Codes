@@ -1,5 +1,5 @@
 /*
-Problem Description : 
+Problem Description : GeeksForGeeks
 --------------------------------------------------------------------
 Given a string s, the task is to count number of subsequences of the form aibjck, where i >= 1, j >=1 and k >= 1.
 
