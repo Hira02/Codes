@@ -37,7 +37,7 @@ Code:
 class Solution {
 public:
     int arrangeCoins(int n) {
-        int left = 0;
+        int left = 1;
         int right = n;
         long mid, curr;
         while(left<=right){
