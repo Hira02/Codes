@@ -4,7 +4,8 @@ There are A islands and there are M bridges connecting them. Each bridge has som
 
 We need to find bridges with minimal cost such that all islands are connected.
 
-It is guaranteed that input data will contain at least one possible scenario in which all islands are connected with each other.
+It is guaranteed that input data will contain at least one possible scenario in which all islands are connected 
+with each other.
 
 Input Format:
 
