@@ -51,33 +51,20 @@ Code:
 ------------------------------------------------------------------
 class Solution {
 public:
-    int isPrefixOfWord(string sentence, string searchWord) {   
-        int resIndex = 1;
-        bool checker = true;
-        for(int  i = 0 ; i < sentence.length(); i++){
-             int count = 0;
-             int index = 0;
-            if(sentence[i] == ' '){
-                resIndex +=1;
-                checker = true;
-                continue;
-            }
-            if(checker)
-             for(int j = i ;j<i+searchWord.length() ; j++){
-             
-            if(sentence[j] == searchWord[index]){
-                count++;
-                index++;
+    int isPrefixOfWord(string sentence, string searchWord) {
+        int n = sentence.length();
+        int j = 0 ;
+        int word_cnt = 1;
+        for(int i = 0 ; i < n && j<searchWord.length(); i++){
+            word_cnt+=sentence[i] == ' ';
+            if(sentence[i] == searchWord[j]){
+                j = j > 0 ? j + 1 : (i == 0 || sentence[i -1] == ' ');
             }else{
-                checker = false;
-                break;
+                j =0;
             }
-         }
-            if(count == searchWord.length())
-                return resIndex;
-         
+            // cout<<j<<" ";
         }
-        return -1;
-        
+        return (j == searchWord.length())?word_cnt:-1;
     }
 };
+//TC : O(n) : as we are traversing the sentence only once
