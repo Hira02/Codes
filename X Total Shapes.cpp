@@ -102,6 +102,7 @@ int main(){
                 }
             }
         }
+        // conflict check
         cout<<count<<"\n";
     }
 
