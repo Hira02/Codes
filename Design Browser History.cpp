@@ -1,8 +1,8 @@
 /*
 Problem Description : (LC 1472)
 --------------------------------------------------
-You have a browser of one tab where you start on the homepage and you can visit another url, get back in the history number of steps or move forward in the 
-history number of steps.
+You have a browser of one tab where you start on the homepage and you can visit another url, get back in the history number of steps or move 
+forward in the history number of steps.
 
 Implement the BrowserHistory class:
 
@@ -32,7 +32,8 @@ browserHistory.back(1);                   // You are in "facebook.com", move bac
 browserHistory.forward(1);                // You are in "google.com", move forward to "facebook.com" return "facebook.com"
 browserHistory.visit("linkedin.com");     // You are in "facebook.com". Visit "linkedin.com"
 browserHistory.forward(2);                // You are in "linkedin.com", you cannot move forward any steps.
-browserHistory.back(2);                   // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
+browserHistory.back(2);                   // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return 
+"google.com"
 browserHistory.back(7);                   // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com"
 */
 
