@@ -1,7 +1,8 @@
 //https://www.interviewbit.com/problems/valid-path/
 /*
 Problem Description : 
-There is a m*n rectangular matrix whose top-left(start) location is (1, 1) and bottom-right(end) location is (m*n). There are k circles each with radius r. Find if there is any path from start to end without touching any circle.
+There is a m*n rectangular matrix whose top-left(start) location is (1, 1) and bottom-right(end) location is (m*n). There are k circles each with radius r.
+Find if there is any path from start to end without touching any circle.
 
 The input contains values of m, n, k, r and two array of integers X and Y, each of length k. (X[i], Y[i]) is the centre of ith circle.
 Input1 : m = 5, n = 5, k = 2, r = 1, 

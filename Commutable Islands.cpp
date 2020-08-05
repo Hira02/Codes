@@ -4,7 +4,8 @@ There are A islands and there are M bridges connecting them. Each bridge has som
 
 We need to find bridges with minimal cost such that all islands are connected.
 
-It is guaranteed that input data will contain at least one possible scenario in which all islands are connected with each other.
+It is guaranteed that input data will contain at least one possible scenario in which all islands are connected 
+with each other.
 
 Input Format:
 
@@ -58,11 +59,11 @@ Explanation 2:
     return find(parent, parent[i]);
 }
 // this function adds y's parent  with x's parent node.
-void Union(int parent[], int x, int y) {
-    int xp = find(parent, x);
-    int yp = find(parent, y);
-    parent[xp] = yp;
-}
+// void Union(int parent[], int x, int y) {
+//     int xp = find(parent, x);
+//     int yp = find(parent, y);
+//     parent[xp] = yp;
+// }
 bool comp(vector<int> a, vector<int> b) {
     return a[2] < b[2];
 }
@@ -82,12 +83,14 @@ int Solution::solve(int A, vector<vector<int> > &B) {
         
         if(up!=vp) { // if parent of A and parent B value is different that means they 
         // belong to two different sets and as per algo we need to union them
-            Union(parent, up, vp);
+            // Union(parent, up, vp);
+             parent[up] = vp;
             ans += B[i][2];
         }
     }
 
     return ans;
 }
+
 
 // reference : https://www.youtube.com/watch?v=wU6udHRIkcc
