@@ -34,6 +34,7 @@ Both strings consists only of lowercase characters.
 */
 Code:
 ------------------------------------------------------------------------------------
+ #1
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
@@ -49,4 +50,39 @@ public:
         }
         return false;
     }
+};
+
+#2: for follow up question
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        unordered_map<char, vector<int>> Map;
+        for(int i = 0 ; i < t.length() ; i++){
+            Map[t[i]].push_back(i);
+        }
+        int prev = -1;
+        int count = 0;
+        for(int i = 0 ; i < s.length() ; i++){
+            auto it = Map.find(s[i]);
+            if(it == Map.end())
+                return false;
+            auto vec = it->second;
+            int pos = upper_bound(vec.begin(), vec.end(), prev)- vec.begin();
+            if(pos == vec.size())
+                return false;
+            prev = vec[pos];
+            /*
+            for(int j = 0 ; j < Map[s[i]].size() ; j++){
+               if(Map[s[i]][j]>prev){
+                    prev = Map[s[i]][j];
+                   count++;
+                   break;
+               }           
+            }
+            */
+        }
+        return true;
+    }
+               
 };
