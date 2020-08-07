@@ -5,11 +5,13 @@ Given an arbitrary unweighted rooted tree which consists of N nodes.
 
 The goal of the problem is to find largest distance between two nodes in a tree.
 
-Distance between two nodes is a number of edges on a path between the nodes (there will be a unique path between any pair of nodes since it is a tree).
+Distance between two nodes is a number of edges on a path between the nodes (there will be a unique path between
+any pair of nodes since it is a tree).
 
 The nodes will be numbered 0 through N - 1.
 
-The tree is given as an array A, there is an edge between nodes A[i] and i (0 <= i < N). Exactly one of the i's will have A[i] equal to -1, it will be root node.
+The tree is given as an array A, there is an edge between nodes A[i] and i (0 <= i < N). Exactly one of the i's will
+have A[i] equal to -1, it will be root node.
 Problem Constraints
 1 <= N <= 40000
 Input Format
