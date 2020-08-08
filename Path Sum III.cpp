@@ -32,6 +32,8 @@ Return 3. The paths that sum to 8 are:
 
 Code:
 ----------------------------------------------------
+      #1:
+      
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -73,3 +75,42 @@ public:
 };
 TC : O(n*n)
 SC: O(1) if fucntion call neglected else O(n*n)
+      
+      #2:
+      
+      /**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    void helper(TreeNode* root, unordered_map<int, int>& Map, int sum, int currSum, int * count){
+        if(root == NULL)
+            return ;
+        currSum+=root->val;
+        if(Map.find(currSum - sum) != Map.end()){
+            (*count) += Map[currSum - sum];
+        }
+        Map[currSum]+=1;
+        helper(root->left, Map, sum, currSum, count);
+        helper(root->right, Map, sum, currSum, count);
+        Map[currSum]-=1;
+    }
+    int pathSum(TreeNode* root, int sum) {
+        unordered_map<int, int> Map;
+        Map[0] = 1;
+        int currSum = 0;
+        int count = 0;
+        helper(root, Map, sum, currSum,  &count);
+        return count;
+    }
+};
+//TC : O(n)
+//TC : O(n) // auxiliary space for map
