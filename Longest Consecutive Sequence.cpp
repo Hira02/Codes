@@ -12,6 +12,8 @@ Output: 4
 Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
 */
 
+#1 :
+
 Code:
 --------------------------------------------------------------------------------------
 class Solution {
@@ -39,3 +41,34 @@ public:
 //https://www.geeksforgeeks.org/longest-consecutive-subsequence/
 //TC : O(n)
 //SC : O(n)
+
+
+#2 : 
+
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        unordered_set<int> Set;
+        for(int i = 0 ; i < nums.size() ; i++){
+            Set.insert(nums[i]);
+        }
+        int res = 0;
+        while(!Set.empty()){
+           auto t = Set.begin();
+            int x = *t;
+            Set.erase(x);
+            int lowerBound = x-1;
+            while(Set.find(lowerBound) != Set.end()){
+                Set.erase(lowerBound);
+                lowerBound--;                
+            }
+            int upperBound = x+1;
+            while(Set.find(upperBound) != Set.end()){
+                Set.erase(upperBound);
+                upperBound++;
+            }
+            res = max(res, upperBound - lowerBound - 1);
+        }
+        return res;
+    }
+};
