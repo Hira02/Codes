@@ -59,40 +59,30 @@ Code:
 ----------------------------------------------------------------------
 class Solution {
 public:
-    unordered_map<int,int> m;
-    int helper(int val){
-        if(val == 1)
-            return 0;
-         int count = 0;
-        if(m.find(val) == m.end()){
-       
-        if(val%2 == 0){
-            val = val/2;
-            // count++;
-            count  = 1 + helper(val);
-        }else{
-            val = val*3+1;
-            // count++;
-           count = 1 + helper(val);
-        }
-        }else{
-            count = m[val];
-        }
-        return count;
-            
-    }
     int getKth(int lo, int hi, int k) {
-        priority_queue<pair<int,int>, vector<pair<int,int>>> pq;
-        for(int i = lo ; i<=hi ; i++){
-        int res = helper(i);
-        pq.push(make_pair(res,i));
-            if(pq.size()>k){
-                pq.pop();
+       vector<pair<int,int>> v;
+        unordered_map<int, int> Map;
+        for(int i=lo;i<=hi;i++)
+        {
+            int counter=0,num=i;
+            if(Map.find(num) != Map.end()){
+                counter = Map[num];
+            }else{
+                while(num!=1)
+            {
+                if(num%2==0)
+                    num=num/2;
+                else
+                    num=3*num+1;
+                counter++;
+               
             }
-        // cout<<res<<" ";
+            Map[i] = counter;
+            }
+            
+            v.push_back(make_pair(counter,i));
         }
-        pair<int,int> res = pq.top();
-        return res.second;
-        // return 0;
+        sort(v.begin(),v.end());
+        return v[k-1].second;
     }
 };
