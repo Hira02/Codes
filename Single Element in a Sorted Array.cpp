@@ -1,3 +1,4 @@
+/*
 Problem Description:(LC 540)
 ---------------------------
 You are given a sorted array consisting of only integers where every element appears exactly twice, 
@@ -10,9 +11,10 @@ Example 2:
 
 Input: [3,3,7,7,10,11,11]
 Output: 10
-
-Code:
---------------------------------------
+Your solution should run in O(log n) time and O(1) space
+*/
+//Code:
+//--------------------------------------
 class Solution {
 public:
     int helper(vector<int>& nums, int l, int r){
