@@ -5,7 +5,8 @@ Given a boolean 2D array where each row is sorted. Find the row with the maximum
 
 Input:
 The first line of input contains an integer T denoting the number of test cases.
-The first line of each test case contains n and m, where n is the number of rows and m is the number of columns. The second line of each test case contains the array elements.
+The first line of each test case contains n and m, where n is the number of rows and m is the number of columns. 
+The second line of each test case contains the array elements.
 
 Output:
 Print the row with the maximum number of 1s.
