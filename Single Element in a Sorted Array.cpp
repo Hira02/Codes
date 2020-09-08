@@ -21,10 +21,7 @@ public:
         if(l>=r+1)
             return -1;
         int mid = l+(r-l)/2;
-        cout<<mid<<"\n";
-        if(mid == 0 && nums[mid] != nums[mid+1])
-            return nums[mid];
-        if(mid == nums.size()-1 && nums[mid] != nums[mid-1])
+        if(mid == 0 || mid == r)
             return nums[mid];
         if(nums[mid] != nums[mid-1] && nums[mid] != nums[mid+1])
             return nums[mid];
