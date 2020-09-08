@@ -29,15 +29,30 @@ rotate 2 steps to the right: [3,99,-1,-100]
  
  Code:
  ------------------------------------------------------------
- class Solution {
+class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        k=k%nums.size();
-        reverse(nums.begin(),nums.begin()+(nums.size()-k));
-        reverse(nums.begin()+(nums.size()-k), nums.end());
-        reverse(nums.begin(), nums.end());
+        int n = nums.size();
+        k = k%n;
+        if(n>1){
+        int temp2 = nums[0];
+        int temp1, processingIndex = 0;
+        for(int i = 0 , j=0 ; i < n ; i++){            
+            temp1 = temp2;
+            processingIndex = (k+processingIndex)%n;
+            temp2 = nums[processingIndex];
+            nums[processingIndex] = temp1;
+            if(processingIndex == j){
+                processingIndex = ++j;
+                if(processingIndex>n-1)
+                    return ;
+                temp2 = nums[processingIndex];
+            }
+        }
+        }
     }
 };
+//https://leetcode.com/problems/rotate-array/discuss/54438/My-c%2B%2B-solution-o(n)time-andand-o(1)space
 /*
 1,2,3,4,5,6,7    k = 3
 5,6,7,1,2,3,4
