@@ -4,10 +4,12 @@ Problem Description : https://practice.geeksforgeeks.org/problems/remove-half-no
 Given A binary Tree. Your task is to remove all the half nodes (which has only one child).
 
 Input:
-First line of input contains the number of test cases T. For each test case, there will be only a single line of input which is a string representing the tree as described 
+First line of input contains the number of test cases T. For each test case, there will be only a single line of input which is a string 
+representing the tree as described 
 below: 
 
-The values in the string are in the order of level order traversal of the tree where, numbers denotes node values, and a character “N” denotes NULL child.
+The values in the string are in the order of level order traversal of the tree where, numbers denotes node values, and a character “N”
+denotes NULL child.
 
 For example:
 https://media.geeksforgeeks.org/wp-content/uploads/20200124141533/Untitled-Diagram65.jpg
@@ -17,12 +19,14 @@ Output:
 Single line output, print the modified tree in inorder traversal.
 
 Your Task:
-You don't need to read input or print anything. Your task is to complete the function removeHalfNodes() which takes the root node of the tree as input and returns 
+You don't need to read input or print anything. Your task is to complete the function removeHalfNodes() which takes the root node of the tree as
+input and returns 
 the root node of the modified tree after removing all the half nodes, ie the ones having just a single child node.
 For example consider the below tree.
 
 https://www.cdn.geeksforgeeks.org/wp-content/uploads/maxMin.png
-Nodes 7, 5 and 9 are half nodes as one of their child is Null. We need to remove all such half nodes and return the root pointer of following new tree.
+Nodes 7, 5 and 9 are half nodes as one of their child is Null. We need to remove all such half nodes and return the root pointer of following 
+new tree.
 
 Expected Time Complexity: O(N).
 Expected Auxiliary Space: O(Height of the Binary Tree).
