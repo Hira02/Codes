@@ -26,6 +26,8 @@ The length of both given strings is in range [1, 10,000].
 */
 Code:
 ---------------------------------------------------------------------
+ #1:
+ 
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
@@ -64,5 +66,36 @@ private:
             }
         }
         return true;
+    }
+};
+
+
+#2:easy to understand
+
+class Solution {
+public:
+    bool compare(vector<int>&a, vector<int>&b){
+        for(int i = 0 ; i < 26 ; i++){
+            if(a[i]!=b[i])
+                return false;
+        }
+        return true;
+    }
+    bool checkInclusion(string s1, string s2) {
+        vector<int>mapS1(26);
+        vector<int>mapS2(26);
+        if(s1.length()>s2.length())
+            return false;
+        for(int i = 0 ; i < s1.length() ; i++){
+            mapS1[s1[i] - 'a']++;
+            mapS2[s2[i] - 'a']++;
+        }
+        for(int i = 0 ; i < s2.length() - s1.length() ; i++){
+            if(compare(mapS1, mapS2))
+                return true;
+            mapS2[s2[i+s1.length()]-'a']++;
+            mapS2[s2[i]-'a']--;
+        }
+        return compare(mapS1, mapS2);
     }
 };
