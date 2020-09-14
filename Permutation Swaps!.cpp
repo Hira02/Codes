@@ -3,7 +3,8 @@ Problem Description : InterviewBit HARD
 -----------------------------------------------------------------------------------------------
 Rishabh has a permutation A of N integers 1, 2, ... N but he doesn't like it. Rishabh wants to get a permutation B.
 
-Also, Rishabh has some M good pairs given in a form of 2D matrix C of size M x 2  where (C[i][0], C[i][1]) denotes that two indexes of the permutation A.
+Also, Rishabh has some M good pairs given in a form of 2D matrix C of size M x 2  where (C[i][0], C[i][1]) denotes that two indexes 
+of the permutation A.
 
 In one operation he can swap Ax and Ay only if (x, y) is a good pair.
 
