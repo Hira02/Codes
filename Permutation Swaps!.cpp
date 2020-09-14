@@ -78,10 +78,12 @@ Explanation 2:
  Need to understand carefully:
  Let's consider indices as vertices of some graph and allowed pairs as 2-ways edges. Than our graph can be divided in connected components.
 
-The key observation: we can get any permutation of elements in one connected component. And obvisously there is no way to swap to elements that belong to different components. Thus we get simple solution:
+The key observation: we can get any permutation of elements in one connected component. And obvisously there is no way to swap to e
+lements that belong to different components. Thus we get simple solution:
 
 Find connected components in our graph.
-For each component compare element in permuations P and Q. If these elements differ for at least one component than the answer is "NO" otherwise answer is "YES".
+For each component compare element in permuations P and Q. If these elements differ for at least one component than the answer is 
+"NO" otherwise answer is "YES".
  
  
  */
