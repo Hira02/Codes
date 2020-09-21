@@ -35,7 +35,8 @@ public:
     }
 };
 */
-
+#1 : Two Stack
+    
 class Solution {
 public:
     vector<int> postorder(Node* root) {
@@ -61,5 +62,29 @@ public:
         }
         return res;
         
+    }
+};
+
+
+#2 : One Stack
+
+class Solution {
+public:
+    vector<int> postorder(Node* root) {
+        stack<Node*> Stack;
+        vector<int> res;
+        if(root == NULL)
+            return res;
+        Stack.push(root);
+        while(!Stack.empty()){
+            Node* top = Stack.top();
+            Stack.pop();
+            res.push_back(top->val);
+            for(int i =0 ; i<top->children.size() ; i++){
+                Stack.push(top->children[i]);
+            }
+        }
+        reverse(res.begin(), res.end());
+        return res;
     }
 };
