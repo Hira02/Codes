@@ -19,6 +19,8 @@ Explanation: 13 = 4 + 9.
 
 Code:
 ----------------------------------------------------------------------------------------------------
+    #1://Approach : https://www.youtube.com/watch?v=o2IBfabt8qM
+    
 class Solution {
 public:
     int numSquares(int n) {
@@ -34,4 +36,40 @@ public:
     }
 };
 
-//Approach : https://www.youtube.com/watch?v=o2IBfabt8qM
+
+
+#2 : faster
+class Solution {
+public:
+    int numSquares(int n) {
+        queue<int> q;
+        vector<int>visited(n);
+        q.push(0);
+        visited[0] = 1;
+        int level = 0;
+        while(!q.empty()){
+            int size = q.size();
+            level++;
+            while(size--){
+                int u = q.front();
+                q.pop();
+            for(int i = 1 ; i*i<= n ;i++){
+                int v = u + (i*i);
+                if(v == n){
+                    return level;
+                }
+                if(v>n){
+                    break;
+                }
+                else{
+                    if(visited[v] == 0){
+                        q.push(v);
+                        visited[v] = 1;
+                    }
+                }
+            }
+            }
+        }
+        return level;
+    }
+};

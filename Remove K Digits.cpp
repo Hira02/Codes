@@ -40,7 +40,8 @@ Remove 1 — Result will be 1245
 Remove 4 — Result will be 1215
 Remove 5 — Result will be 1214
 In this case we get the lowest digit if we remove 2 because the number next to it is smaller than 2.
-After observing the two examples we can say that if all the digits are in increasing order than we will delete the last digit , otherwise we will delete a digit for which next digit is smaller.
+After observing the two examples we can say that if all the digits are in increasing order than we will delete the last digit , 
+otherwise we will delete a digit for which next digit is smaller.
 Lets consider one more example to get a solid grasp of this:
 Suppose the number is 10354 and k is 2 , that means we need to delete two digits.
 We will start iterating the number and we will see that the number next to 1 is smaller than it. so we will remove 1.

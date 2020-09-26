@@ -23,6 +23,7 @@ Output: [1,2,1,2]
 */
 Code:
 ----------------------------------------------------------
+ //1:
 class Solution {
 public:
     vector<int> shuffle(vector<int>& nums, int n) {
@@ -36,5 +37,28 @@ public:
         }
         return ans;
         
+    }
+};
+
+//2: in-place   https://leetcode.com/problems/shuffle-the-array/discuss/675007/Python-O(n)-time-O(1)-space-detailed-explanation
+class Solution {
+public:
+    int getDesired(int numIndex, int n){
+        return (numIndex<n)?numIndex*2 : (numIndex - n)*2+1;
+    }
+    vector<int> shuffle(vector<int>& nums, int n) {
+    for(int i = 0 ; i < nums.size() ; i++){
+        int j = i;
+        while(nums[i]>=0){
+            j = getDesired(j, n);
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = -temp;
+        }
+    }
+        for(int i = 0 ; i < nums.size() ; i++)
+            if(nums[i]<0)
+                nums[i] = -nums[i];
+        return nums;
     }
 };

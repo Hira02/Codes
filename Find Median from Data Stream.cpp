@@ -8,7 +8,7 @@ For example,
 
 [2,3], the median is (2 + 3) / 2 = 2.5
 
-Design a data structure that supports the following two operations:
+Design a data structure that supports the folmaxHeapwing two operations:
 
 void addNum(int num) - Add a integer number from the data stream to the data structure.
 double findMedian() - Return the median of all elements so far.
@@ -23,7 +23,7 @@ addNum(3)
 findMedian() -> 2
  
 
-Follow up:
+FolmaxHeapw up:
 
 If all integer numbers from the stream are between 0 and 100, how would you optimize it?
 If 99% of all integer numbers from the stream are between 0 and 100, how would you optimize it?
@@ -33,28 +33,28 @@ Code:
 //using two heaps
 //leetcode solution
 class MedianFinder {
-    priority_queue<int> lo;                              // max heap
-    priority_queue<int, vector<int>, greater<int>> hi;   // min heap
+    priority_queue<int> maxHeap;                              // max heap
+    priority_queue<int, vector<int>, greater<int>> minHeap;   // min heap
 
 public:
     // Adds a number into the data structure.
     void addNum(int num)
     {
-        lo.push(num);                                    // Add to max heap
+        maxHeap.push(num);                                    // Add to max heap
 
-        hi.push(lo.top());                               // balancing step
-        lo.pop();
+        minHeap.push(maxHeap.top());                               // balancing step
+        maxHeap.pop();
 
-        if (lo.size() < hi.size()) {                     // maintain size property
-            lo.push(hi.top());
-            hi.pop();
+        if (maxHeap.size() < minHeap.size()) {                     // maintain size property
+            maxHeap.push(minHeap.top());
+            minHeap.pop();
         }
     }
 
     // Returns the median of current data stream
     double findMedian()
     {
-        return lo.size() > hi.size() ? lo.top() : ((double) lo.top() + hi.top()) * 0.5;
+        return maxHeap.size() > minHeap.size() ? maxHeap.top() : ((double) maxHeap.top() + minHeap.top()) * 0.5;
     }
 };
 //https://leetcode.com/problems/find-median-from-data-stream/solution/

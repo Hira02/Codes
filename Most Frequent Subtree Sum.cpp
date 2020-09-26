@@ -1,7 +1,9 @@
 /*
 Problem Description:(Lc 508)
 ---------------------------------------------------------------
-Given the root of a tree, you are asked to find the most frequent subtree sum. The subtree sum of a node is defined as the sum of all the node values formed by the subtree rooted at that node (including the node itself). So what is the most frequent subtree sum value? If there is a tie, return all the values with the highest frequency in any order.
+Given the root of a tree, you are asked to find the most frequent subtree sum. The subtree sum of a node is defined as the sum of all the node values 
+formed by the subtree rooted at that node (including the node itself). So what is the most frequent subtree sum value? If there is a tie, return all 
+the values with the highest frequency in any order.
 
 Examples 1
 Input:
@@ -36,7 +38,7 @@ Code:
 class Solution {
 public:
     int max_= INT_MIN;
-    int helper(TreeNode* root, map<int, int> &m, int sum){
+    int helper(TreeNode* root, unordered_map<int, int> &m, int sum){
         if(root == NULL)
             return 0;
         sum+=root->val;
@@ -44,22 +46,19 @@ public:
         int rightSum = helper(root->right, m, 0);
         sum+=(leftSum+rightSum);
         m[sum]++;
+        max_ = max(max_, m[sum]);
         return sum;
+        
         
     }
     vector<int> findFrequentTreeSum(TreeNode* root) {
         vector<int> res;
-        map<int, int> m;
+        unordered_map<int, int> m;
         if(root == NULL)
             return res;
         helper(root, m, 0);
         for(auto c:m){
-            if(c.second>max_){
-                res.clear();
-                res.push_back(c.first);
-                max_ = c.second;
-                
-            }else if(c.second == max_){
+             if(c.second == max_){
                 res.push_back(c.first);
             }
         }

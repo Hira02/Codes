@@ -7,11 +7,13 @@ if x is even then x = x / 2
 if x is odd then x = 3 * x + 1
 For example, the power of x = 3 is 7 because 3 needs 7 steps to become 1 (3 --> 10 --> 5 --> 16 --> 8 --> 4 --> 2 --> 1).
 
-Given three integers lo, hi and k. The task is to sort all integers in the interval [lo, hi] by the power value in ascending order, if two or more integers have the same power value sort them by ascending order.
+Given three integers lo, hi and k. The task is to sort all integers in the interval [lo, hi] by the power value in ascending order, if two or more integers 
+have the same power value sort them by ascending order.
 
 Return the k-th integer in the range [lo, hi] sorted by the power value.
 
-Notice that for any integer x (lo <= x <= hi) it is guaranteed that x will transform into 1 using these steps and that the power of x is will fit in 32 bit signed integer.
+Notice that for any integer x (lo <= x <= hi) it is guaranteed that x will transform into 1 using these steps and that the power of x is will fit in 32 bit 
+signed integer.
 
  
 
@@ -57,40 +59,30 @@ Code:
 ----------------------------------------------------------------------
 class Solution {
 public:
-    unordered_map<int,int> m;
-    int helper(int val){
-        if(val == 1)
-            return 0;
-         int count = 0;
-        if(m.find(val) == m.end()){
-       
-        if(val%2 == 0){
-            val = val/2;
-            // count++;
-            count  = 1 + helper(val);
-        }else{
-            val = val*3+1;
-            // count++;
-           count = 1 + helper(val);
-        }
-        }else{
-            count = m[val];
-        }
-        return count;
-            
-    }
     int getKth(int lo, int hi, int k) {
-        priority_queue<pair<int,int>, vector<pair<int,int>>> pq;
-        for(int i = lo ; i<=hi ; i++){
-        int res = helper(i);
-        pq.push(make_pair(res,i));
-            if(pq.size()>k){
-                pq.pop();
+       vector<pair<int,int>> v;
+        unordered_map<int, int> Map;
+        for(int i=lo;i<=hi;i++)
+        {
+            int counter=0,num=i;
+            if(Map.find(num) != Map.end()){
+                counter = Map[num];
+            }else{
+                while(num!=1)
+            {
+                if(num%2==0)
+                    num=num/2;
+                else
+                    num=3*num+1;
+                counter++;
+               
             }
-        // cout<<res<<" ";
+            Map[i] = counter;
+            }
+            
+            v.push_back(make_pair(counter,i));
         }
-        pair<int,int> res = pq.top();
-        return res.second;
-        // return 0;
+        sort(v.begin(),v.end());
+        return v[k-1].second;
     }
 };

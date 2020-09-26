@@ -1,7 +1,8 @@
 /*
 Problem Description : GFG
 ----------------------------------------------------------------------------------------------------
-Given an array A of size N having distinct elements, the task is to find the next greater element for each element of the array in order of their appearance in the array.
+Given an array A of size N having distinct elements, the task is to find the next greater element for each element of the array in order of their 
+appearance in the array.
 If no such element exists, output -1 
 
 Input:
