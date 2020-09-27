@@ -44,41 +44,48 @@ cells[i] is in {0, 1}
 
 */
 
-
-Code:
-------------------------------------------------------------------------------------------------------------------------
-class Solution {
+Code : ------------------------------------------------------------------------------------------------------------------------
+class Solution
+{
 public:
-    vector<int> nextSet(vector<int>& cells){
-         vector<int> tmp(cells.size());
-    for(int i=1;i<cells.size()-1;i++){
-            tmp[i]=cells[i-1]==cells[i+1]?1:0;
+    vector<int> nextSet(vector<int> &cells)
+    {
+        vector<int> tmp(cells.size());
+        for (int i = 1; i < cells.size() - 1; i++)
+        {
+            tmp[i] = cells[i - 1] == cells[i + 1] ? 1 : 0;
         }
         return tmp;
     }
-    vector<int> prisonAfterNDays(vector<int>& cells, int N) {
+    vector<int> prisonAfterNDays(vector<int> &cells, int N)
+    {
         set<vector<int>> Set;
         vector<int> temp = cells;
         bool flag = false;
-        int count = 0;    
-        for(int i = 0 ; i < N ; i++){
-             vector<int> next = nextSet(cells);
-            if(Set.find(next) != Set.end()){
+        int count = 0;
+        for (int i = 0; i < N; i++)
+        {
+            vector<int> next = nextSet(cells);
+            if (Set.find(next) != Set.end())
+            {
                 flag = true;
                 break;
-            }else{
+            }
+            else
+            {
                 Set.insert(next);
                 count++;
             }
             cells = next;
         }
-        if(flag){
-            N = N%count;
-        for(int i = 0 ; i < N ; i++){
-            cells = nextSet(cells);
-        }
+        if (flag)
+        {
+            N = N % count;
+            for (int i = 0; i < N; i++)
+            {
+                cells = nextSet(cells);
+            }
         }
         return cells;
-        
     }
 };

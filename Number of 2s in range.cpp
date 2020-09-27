@@ -5,6 +5,7 @@ Count the number of 2s as digit in all numbers from 0 to n.
 
 Code:*/
 --------------------------------------------------------------------------------------
+*/
 #include <bits/stdc++.h>
 using namespace std;
 long long int numberOf2sinRange(long long int number)
