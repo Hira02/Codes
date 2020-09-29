@@ -61,6 +61,7 @@ Note: Answer will in the range of 32-bit signed integer.
 
 Code:
 --------------------------------------------------------------------------------------------------------------------------------
+#1 : 
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -84,6 +85,25 @@ public:
     int widthOfBinaryTree(TreeNode* root) {
         vector<pair<unsigned, unsigned>> ans;
         return (int)getWidth(root, 0, 1, ans);
+        
+    }
+};
+
+#2 : 
+class Solution {
+public:
+    void getWidth(TreeNode* root, int level,unsigned nodeOrder, unordered_map<int, unsigned>& counter, int* maxWidth){
+        if(root == NULL) return ;
+        if(counter.find(level) == counter.end()) counter[level] = nodeOrder;
+        (*maxWidth) = max((*maxWidth),(int)(nodeOrder - counter[level] + 1));
+        getWidth(root->left, level+1, nodeOrder*2, counter, maxWidth);
+        getWidth(root->right, level+1, nodeOrder*2+1, counter, maxWidth);
+    }
+    int widthOfBinaryTree(TreeNode* root) {
+       unordered_map<int, unsigned> ans;
+        int maxWidth = 0;
+        getWidth(root, 0, 0, ans, &maxWidth);
+        return maxWidth;
         
     }
 };
