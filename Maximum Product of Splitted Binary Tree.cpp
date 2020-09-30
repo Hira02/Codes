@@ -1,7 +1,8 @@
 /*
 Problem Description:(LC 1339)
 --------------------------------------------------------------
-Given a binary tree root. Split the binary tree into two subtrees by removing 1 edge such that the product of the sums of the subtrees are maximized.
+Given a binary tree root. Split the binary tree into two subtrees by removing 1 edge such that the product of the sums of the subtrees 
+are maximized.
 https://assets.leetcode.com/uploads/2020/01/21/sample_1_1699.png
 Input: root = [1,2,3,4,5,6]
 Output: 110
