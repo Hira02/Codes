@@ -7,7 +7,7 @@ Given a rows x cols binary matrix filled with 0's and 1's, find the largest rect
 
 Example 1:
 
-
+https://assets.leetcode.com/uploads/2020/09/14/maximal.jpg
 Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
 Output: 6
 Explanation: The maximal rectangle is shown in the above picture.
