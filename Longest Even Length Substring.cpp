@@ -1,7 +1,8 @@
 /*
 Problem Description : https://practice.geeksforgeeks.org/problems/longest-even-length-substring/0
 --------------------------------------------------------------------------------------------------------------------
-For given string ‘str’ of digits, find length of the longest substring of ‘str’, such that the length of the substring is 2k digits and sum of left k digits is equal to the sum of right k digits.
+For given string ‘str’ of digits, find length of the longest substring of ‘str’, such that the length of the substring is 2k digits and sum of left k digits is 
+equal to the sum of right k digits.
  
 
 Input:
