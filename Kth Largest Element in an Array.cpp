@@ -26,7 +26,6 @@ public:
         *a = *b;
         *b = temp;
     }
-    // int getMin(vectior)
     void heapify(int  i, vector<int> &nums){
         int left = 2*i+1;
         int right = 2*i+2;
