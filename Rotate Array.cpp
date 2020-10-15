@@ -29,6 +29,7 @@ rotate 2 steps to the right: [3,99,-1,-100]
  
  Code:
  ------------------------------------------------------------
+  #1 : 
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
@@ -58,3 +59,25 @@ public:
 5,6,7,1,2,3,4
 
 */
+
+
+#2 : 
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        for(int start = 0 , count = 0; count<n ; start++){
+            int curr = start;
+            int prev = nums[curr];
+            do{
+                int nextIndex = (k + curr)%n;
+                int temp = nums[nextIndex];//store the value that will change
+                nums[nextIndex] = prev; // change the value
+                prev = temp;
+                curr = nextIndex;
+                count++;
+            }while(curr != start);
+        }
+        
+    }
+};
