@@ -44,6 +44,7 @@ There will not be any duplicated flights or self cycles.
 
 Code:
 ------------------------------------------------------------------------------------
+ #1:  
 typedef tuple<int,int,int> ti;
 class Solution {
 public:
@@ -79,5 +80,35 @@ public:
             }
         }
         return -1;
+    }
+};
+
+#2: Faster
+class Solution {
+public:
+    int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int K) {
+        vector<vector<pair<long , long>>> Map(n);
+        vector<long> distOld(n, INT_MAX);
+        vector<long> dist(n, INT_MAX);
+        for(int i=0; i < flights.size() ; i++){
+            Map[flights[i][0]].push_back({flights[i][1], flights[i][2]});
+        }
+        dist[src] = 0;
+        for(int i = 0 ; i <= K ; i++){
+            distOld = dist;
+            for(int city = 0; city<n ; city++){
+                for(int t = 0; t<Map[city].size() ; t++){
+                    int s = city;
+                    int end = Map[city][t].first;
+                    // cout<<dt<<"\n";
+                    int d = Map[city][t].second;
+                    if(dist[end]>(distOld[s]+d))
+                        dist[end] = distOld[s]+d;
+                }
+            }
+        }
+        if(dist[dst] == INT_MAX)
+            return -1;
+        return dist[dst];
     }
 };
