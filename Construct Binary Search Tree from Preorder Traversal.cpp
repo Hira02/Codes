@@ -21,6 +21,8 @@ Constraints:
 The values of preorder are distinct.
 
 */
+
+#1 : TC : O(n*n)
 Code:
 ---------------------------------------------------
 /**
@@ -60,3 +62,28 @@ public:
         
     }
 };
+
+#2 : TC : O(n)
+
+Node* constructTreeUtil(int pre[], int size, int low, int high, int key, int *index){
+    if((*index)>=size)
+        return NULL;
+    Node* root = NULL;
+    if(key>low && key<high){
+        root = newNode(key);
+        (*index) = (*index)+1;
+        if((*index)<size){
+            root->left = constructTreeUtil(pre,size,  low, key, pre[*index], index);
+        }
+        if((*index)<size){
+            root->right = constructTreeUtil(pre, size, key, high, pre[*index], index);
+        }
+    }
+    // else
+        return root;
+}
+Node* constructTree(int pre[], int size) {
+    //code here
+    int index = 0;
+    return constructTreeUtil(pre, size, INT_MIN, INT_MAX, pre[index], &index);
+}
