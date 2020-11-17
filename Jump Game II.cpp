@@ -57,6 +57,8 @@ public:
             stairs--;
             if(stairs == 0){
                 jumps++;
+                if(steps>= ladder)
+                       return -1; //update made on 17-11-2020. Test case to follow [2,1,0,3]
                 stairs = ladder - steps;
             }
             
