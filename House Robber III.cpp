@@ -46,6 +46,7 @@ Explanation: Maximum amount of money the thief can rob = 4 + 5 = 9.
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+#1:
 class Solution
 {
 public:
@@ -64,5 +65,26 @@ public:
     {
         vector<int> ans = helper(root);
         return max(ans[0], ans[1]);
+    }
+};
+
+#2 : Faster
+
+class Solution {
+public:
+ pair<int, int> dfs(TreeNode* node) {
+        if (node == NULL)
+            return make_pair(0,0);
+        
+        pair<int, int> l = dfs(node->left);
+        pair<int, int> r = dfs(node->right);
+        
+        int steal = node->val + l.second + r.second;
+        int n_steal = l.first + r.first;
+        return make_pair(max(steal, n_steal), n_steal);
+    };
+    
+    int rob(TreeNode* root) {
+        return dfs(root).first;
     }
 };
