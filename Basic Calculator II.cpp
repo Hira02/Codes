@@ -23,7 +23,7 @@ Note:
 You may assume that the given expression is always valid.
 Do not use the eval built-in library function.
 */
-//Code:
+//Code: #1
 //--------------------------------------------------------------------------------------------------------------
 class Solution {
 public:
@@ -125,5 +125,35 @@ public:
         }
         
         return nums.top();;
+    }
+};
+
+#2: more optimized
+----------------------------------------------------------------------------------------------------------
+class Solution {
+public:
+    int calculate(string s) {
+        int result = 0, currNum = 0, num = 0;
+        char op = '+';
+        for(int i = 0 ;i  <s.length() ; i++){
+            char c = s[i];
+            if(isdigit(c)){
+                num = num*10 + (c-'0');
+            }
+            if(c == '+' || c == '-' || c == '*' || c == '/' || i == s.length()-1){
+                switch(op){
+                    case '+' : currNum = num; break;
+                    case '-' : currNum = -num; break;
+                    case '*' : currNum *= num; break;
+                    case '/' : currNum /= num; break;
+                }
+                if(c == '+' || c == '-' || i == s.length()-1){
+                    result+= currNum;
+                }
+                num = 0;
+                op = c;
+            }
+        }
+        return result;
     }
 };
