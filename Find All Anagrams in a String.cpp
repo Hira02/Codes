@@ -38,44 +38,39 @@ Code:
 ----------------------------------------------------------------------------
 class Solution {
 public:
-    int MAX = 256;
-    bool compare(vector<char> &v1, vector<char> &v2){
-        for(int  i  =  0 ; i<v1.size() ; i++){
-            if(v1[i] != v2[i])
-                return false;
-        }
-        return true;
-    }
     vector<int> findAnagrams(string s, string p) {
-        int n = s.length();
-        int m = p.length();
         vector<int> res;
-        if(n==0)
-            return res;
-        if(m == 0 || m>n){
-            return res;
+        vector<char> pChars(128, 0);
+        int plen = p.length();
+        int pCount = 0;
+        for(int i = 0 ; i <plen ; i++){
+            pChars[p[i]]++;
+            if(pChars[p[i]] == 1)
+                pCount++;
         }
-        vector<char> v1(MAX);
-        vector<char> v2(MAX);
-        for(int  i = 0 ; i < m ; i ++){
-            v1[p[i]]++;
-            v2[s[i]]++;
-        }
-        for(int i = m ; i <n ; i++){
-            if(compare(v1,v2)){
-                res.push_back(i-m);
+        int slen  = s.length();
+        vector<char> sChars(128, 0);
+        int left = 0, right = 0, count = 0;
+        while(right<slen){
+            sChars[s[right]]++;
+            if(pChars[s[right]] == sChars[s[right]])
+                count++;
+            right++;
+            if(right-left>plen){
+                if(pChars[s[left]] == sChars[s[left]]){
+                    count--;
+                }
+                 sChars[s[left]]--;
+                left++;
+               
             }
-            v2[s[i]]++;
-            v2[s[i-m]]--;
+            if(count == pCount){
+                res.push_back(left);
             }
-        if(compare(v1,v2)){
-            res.push_back(n-m);
         }
-        
         return res;
-        
     }
 };
 
-//TC : O(n) as 256 is constant
-//SC  :O(m+n)
+//TC : O(n) as 128 is constant
+//SC  :O(m)+O(n)
