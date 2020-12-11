@@ -16,6 +16,7 @@ Output: "bb"
 
 //Code:
 //-----------------------------------------------------------------------------------------------------
+#1 :
 class Solution {
 public:
     int expandFromMiddle(string s, int left, int right){
@@ -42,5 +43,40 @@ public:
             }
         }
         return s.substr(start, end -start +1);
+    }
+};
+
+#2 : Faster
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        // int len = 0;
+        int start = 0;
+        int end = 0;
+        int k = 0;
+        int len = s.length();
+        int maxLen = 0;
+        string res = "";
+        while(k<len){
+            start = k;
+            end = k;
+            while(start>=1 && s[start-1] == s[k])
+                start--;
+            while(end<len-1 && s[end+1] == s[k])
+                end++;
+            int updated_k = end+1;
+            while(start>=1 && end<len-1 && (s[start-1] == s[end+1]))
+            {
+                start--;
+                end++;
+            }
+            if(maxLen<(end-start+1)){
+                maxLen = end-start+1;
+                res = s.substr(start, maxLen);
+            }
+            k = updated_k;
+            
+        }
+        return res;
     }
 };
