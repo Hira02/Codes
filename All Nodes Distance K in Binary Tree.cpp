@@ -32,6 +32,9 @@ The target node is a node in the tree.
 0 <= K <= 1000.
 
 */
+
+#1:
+
 COde:
 ----------------------------------------
 /**
@@ -107,5 +110,68 @@ public:
         
     }
 };
-//TC : O(n)
-//SC  :O(n)
+
+#2:;
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
+        unordered_map<TreeNode*, TreeNode*> parent_map;
+        queue<TreeNode*> q;
+        unordered_map<TreeNode*, bool> visited;
+        parent_map[root] = NULL;
+        q.push(root);
+        while(!q.empty()){
+            TreeNode* curr = q.front();
+            q.pop();
+            if(curr->left){
+                q.push(curr->left);
+                parent_map[curr->left] = curr;
+            }
+            if(curr->right){
+                q.push(curr->right);
+                parent_map[curr->right] = curr;
+            }
+        }
+        q.push(target);
+        visited[target] = true;
+        int currLevel = 0;
+        while(!q.empty()){
+            if(currLevel++ == K)
+                break;
+            int size = q.size();
+            while(size--){
+                TreeNode* curr = q.front();
+                q.pop();
+                if(curr->left && !visited[curr->left]){
+                    q.push(curr->left);
+                    visited[curr->left] = true;
+                }
+                 if(curr->right && !visited[curr->right]){
+                    q.push(curr->right);
+                    visited[curr->right] = true;
+                }
+                 if(parent_map[curr] && !visited[parent_map[curr]]){
+                    q.push(parent_map[curr]);
+                    visited[parent_map[curr]] = true;
+                }
+            }
+        }
+        vector<int> res;
+        while(!q.empty()){
+            TreeNode* node = q.front();
+            q.pop();
+            res.push_back(node->val);
+        }
+        return res;
+        
+    }
+};
