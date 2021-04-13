@@ -31,6 +31,8 @@ Note:
 -10000 < points[i][0] < 10000
 -10000 < points[i][1] < 10000
 */
+
+#1: 
 Code:
 ----------------------------------------------------------------
 
@@ -71,5 +73,69 @@ public:
         }
         return res;
         
+    }
+};
+
+
+#2: 
+class Solution {
+public:
+    long calDist(int a, int b){
+        return a*a + b*b;
+    }
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        priority_queue<pair<long, vector<int>>> pq;
+        for(int i = 0 ; i < points.size() ; i++){
+            long dist = calDist(points[i][0], points[i][1]);
+            pq.push(make_pair(dist, points[i]));
+            if(pq.size() == k+1){
+                pq.pop();
+            }
+        }
+        vector<vector<int>> res;
+        while(pq.size()>0){
+            pair<int, vector<int>> top = pq.top();
+            pq.pop();
+            res.push_back(top.second);
+        }
+        return res;
+    }
+};
+
+
+#3:
+class Solution {
+public:
+
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        vector<vector<int>> res;
+        vector<vector<int>> distance;
+        int n = points.size();
+        for(int i = 0 ; i < n ; i++){
+            distance.push_back({i, points[i][0]*points[i][0] + points[i][1]*points[i][1]});
+        }
+        int left = 0, right = n-1;
+        while(left<= right){
+            int i = 0, j = right-1;
+            while(i<=j){
+                if(distance[i][1]>distance[right][1]){
+                    swap(distance[i], distance[j]);
+                    j--;
+                }else
+                    i++;
+            }
+            swap(distance[i], distance[right]);
+            if(i == k-1){
+                break;
+            }else if(i<k-1){
+                left = i+1;
+            }else{
+                right = i-1;
+            }
+        }
+        for(int i = 0 ; i <k ; i++){
+            res.push_back(points[distance[i][0]]);
+        }
+        return res;
     }
 };
