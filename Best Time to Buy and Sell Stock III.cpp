@@ -30,6 +30,8 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 //Code: same code as if there are at most k transaction is allowed (LC 188)
 //----------------------------------------------------------------------------------------------------------
+#1:
+
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -46,3 +48,22 @@ public:
         return sell[2];
     }
 };
+
+
+#2:
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int t_i10 = 0, t_i20 = 0;
+        int t_i11 = INT_MIN, t_i21 = INT_MIN;
+        for(int i = 0 ; i < prices.size() ; i++){
+            t_i20 = max(t_i20 , t_i21 + prices[i]);
+            t_i21 = max(t_i21 , t_i10 - prices[i]);
+            t_i10 = max(t_i10 , t_i11 + prices[i]);
+            t_i11 = max(t_i11 , -prices[i]);
+        }
+        return t_i20;
+    }
+};
+
+mention : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems
