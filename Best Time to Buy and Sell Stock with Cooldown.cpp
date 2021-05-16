@@ -29,7 +29,8 @@ case 2 :not having a stock
 - var sold = max(rest, hold + prices[i])
 */
 
-
+#1:
+    
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -42,3 +43,21 @@ public:
         return max(rest, sold);
     }
 };
+
+
+#2:
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int t_ik0 = 0, t_ik0pre = 0, t_ik1 = INT_MIN;
+        for(int i = 0 ; i < prices.size() ; i++){
+            int t_ik0old = t_ik0;
+            t_ik0 = max(t_ik0, t_ik1 + prices[i]);
+            t_ik1 = max(t_ik1, t_ik0pre - prices[i]);
+            t_ik0pre = t_ik0old;
+        }
+        return t_ik0;
+    }
+};
+
+mention : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems
