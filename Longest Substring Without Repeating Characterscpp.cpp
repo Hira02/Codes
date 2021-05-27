@@ -64,3 +64,20 @@ int main() {
 	return 0;
 }
  
+
+
+#java
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+            int l = 0;
+            int maxLen = 0;
+            // Vector<Integer> cnt = new Vector<>(256);
+            int cnt[] = new int[256];
+            for(int i = 0 ; i < s.length() ; i++){
+                    l = cnt[s.charAt(i)]>0 ? Math.max(l, cnt[s.charAt(i)]):l;
+                    cnt[s.charAt(i)] = i+1;
+                    maxLen = Math.max(maxLen, i-l+1);
+            }
+        return maxLen;
+    }
+}
