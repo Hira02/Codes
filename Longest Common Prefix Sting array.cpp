@@ -41,3 +41,34 @@ public:
         return strs[0];
     }
 };
+
+#JAVA
+class Solution{
+    int findMinLen(String arr[], int n){
+        int len = arr[0].length();
+        for(int i = 1 ; i<n ; i++){
+            len = Math.min(len, arr[i].length());
+        }
+        return len;
+    }
+    String findLCP(String arr[], int n){
+        String res = "";
+        int minLen = findMinLen(arr, n);
+        
+        for(int i = 0 ; i<minLen ; i++){
+            char curr = arr[0].charAt(i);
+            for(int j = 1 ; j<n ; j++){
+                char ch = arr[j].charAt(i);
+                if(ch!= curr)
+                    return res;
+            }
+            res+=(curr);
+        }
+        return res;
+    }
+    String longestCommonPrefix(String arr[], int n){
+        // code here
+        String res = findLCP(arr, n);
+        return res.length()>0?res:"-1";
+    }
+}

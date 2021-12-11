@@ -54,3 +54,28 @@ int main() {
 	}
 	return 0;
 }
+
+#java
+class Solution{
+    static int longestSubstrDistinctChars(String S){
+        // code here
+        if(S.length() == 0)
+            return 0;
+        int arr[] = new int[256];
+        int i = 0, j = 0;
+        arr[S.charAt(0)-0] = 1;
+        int res = 1;
+        while(j< S.length()-1){
+            if(arr[S.charAt(j+1)-0] == 0){
+                arr[S.charAt(j+1)-0] = 1;
+                j++;
+                res = Math.max(res, j-i+1);
+            }else{
+                arr[S.charAt(i)-0]--;
+                i++;
+            }
+        }
+        return res;
+        
+    }
+}
